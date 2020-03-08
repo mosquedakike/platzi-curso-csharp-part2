@@ -27,17 +27,14 @@ namespace CoreEscuela
                 Console.WriteLine($"key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
 
-            Printer.WriteTitle("Acceso a diccionario");
-            WriteLine(diccionario[23]);
-            Printer.WriteTitle("Otro diccionario");
-            var dic = new Dictionary<string, string>();
-            dic.Add("C#","Es un lenguaje muy chevere");
-            Console.WriteLine(dic["C#"]);
-            dic["ASP"] = "Es la proxima tencologia que tengo que aprender";
-            Console.WriteLine(dic["ASP"]);
+            var tmpdic = engine.GetDiccionarioObjetos();
 
-        Console.ReadLine();
+            ReadLine();
+
         }
+
+    
+        
 
         private static void ImpimirCursosEscuela(Escuela escuela)
         {
@@ -50,5 +47,6 @@ namespace CoreEscuela
                 }
             }
         }
+
     }
 }
