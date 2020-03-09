@@ -25,7 +25,7 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
-        
+
 
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             out int conteoEvaluaciones,
