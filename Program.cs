@@ -27,10 +27,20 @@ namespace CoreEscuela
                 Console.WriteLine($"key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
 
+<<<<<<< HEAD
             var dictmp = engine.GetDiccionarioObjetos();
 
         Console.ReadLine();
+=======
+            var tmpdic = engine.GetDiccionarioObjetos();
+
+            ReadLine();
+
+>>>>>>> d0f56e9486c65db8790f578c0459bf557f99328f
         }
+
+    
+        
 
         private static void ImpimirCursosEscuela(Escuela escuela)
         {
@@ -43,5 +53,6 @@ namespace CoreEscuela
                 }
             }
         }
+
     }
 }
