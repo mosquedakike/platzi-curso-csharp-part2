@@ -27,16 +27,13 @@ namespace CoreEscuela
                 Console.WriteLine($"key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
 
-<<<<<<< HEAD
             var dictmp = engine.GetDiccionarioObjetos();
 
-        Console.ReadLine();
-=======
-            var tmpdic = engine.GetDiccionarioObjetos();
+            engine.imprimirDiccionario(dictmp);
 
-            ReadLine();
+            WriteLine(dictmp[0]);
 
->>>>>>> d0f56e9486c65db8790f578c0459bf557f99328f
+            Console.ReadLine();
         }
 
     
