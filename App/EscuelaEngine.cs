@@ -26,18 +26,40 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
-        public void imprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> dic)
+        public void imprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> dic, bool imprEval = false)
         {
-            foreach (var obj in dic)
+            foreach (var objkey in dic)
             {
-                Printer.WriteTitle(obj.Key.ToString());
+                Printer.WriteTitle(objkey.Key.ToString());
 
-                foreach (var val in obj.Value)
+                foreach (var val in objkey.Value)
                 {
-                    Console.WriteLine(val);
+                    switch (objkey.Key)
+                    {
+                        case LlaveDiccionario.Evaluación:
+                            if (imprEval)
+                                Console.WriteLine(val);
+                            break;
+                        case LlaveDiccionario.Escuela:
+                            Console.WriteLine("Escuela: " + val);
+                            break;
+                        case LlaveDiccionario.Alumno:
+                            Console.WriteLine("Alumno: " + val.Nombre);
+                            break;
+                        case LlaveDiccionario.Curso:
+                            var curtemp = val as Curso;
+                            if(curtemp != null)
+                            {
+                                int count = curtemp.Alumnos.Count;
+                                Console.WriteLine("Curso: " + val.Nombre + " Cantidad Alumnos: " + count);
+                            }
+                            break;
+                        default:
+                            Console.WriteLine(val);
+                            break;
+                    }
                 }
             }
-
         }
 
 
