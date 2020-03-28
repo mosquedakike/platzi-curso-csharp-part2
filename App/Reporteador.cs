@@ -18,19 +18,29 @@ namespace CoreEscuela.App
             _diccionario = dicObcEsc;
         }
 
-        public IEnumerable<Escuela> GetListaEvaluaciones()
+        public IEnumerable<Evaluación> GetListaEvaluaciones()
         {
-            IEnumerable<Escuela> rta;
-
-            if (_diccionario.TryGetValue(LlaveDiccionario.Escuela, out IEnumerable<ObjetoEscuelaBase> lista))
+            if (_diccionario.TryGetValue(LlaveDiccionario.Evaluación, out IEnumerable<ObjetoEscuelaBase> lista))
             {
-                rta = lista.Cast<Escuela>();
+                return lista.Cast<Evaluación>();
             }
             {
-                rta = null;
+                return new List<Evaluación>();
             }
+        }
 
-            return rta;
+        public IEnumerable<string> GetListaAsignaturas()
+        {
+            var listaEvaluaciones = GetListaEvaluaciones();
+
+            return (from Evaluación ev in listaEvaluaciones
+                   select ev.Asignatura.Nombre).Distinct();
+        }
+
+        public Dictionary<string, IEnumerable<Evaluación>> GetDicEvaluaXAsig()
+        {
+            var dictaRta = new Dictionary<string, IEnumerable<Evaluación>>();
+            return dictaRta;
         }
     }
 }
