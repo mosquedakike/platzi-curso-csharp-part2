@@ -50,14 +50,35 @@ namespace CoreEscuela.App
 
             foreach (var asig in listaAsig)
             {
-                var evalAsig = from eval in listaEval
+                var evalsAsig = from eval in listaEval
                                where eval.Asignatura.Nombre == asig
                                select eval;
 
-                dictaRta.Add(asig, evalAsig);
+                dictaRta.Add(asig, evalsAsig);
             }
 
             return dictaRta;
         }
+
+        public Dictionary<String, IEnumerable<object>> GetPromedioPorAsignatura()
+        {
+            var rta = new Dictionary<String, IEnumerable<object>>();
+            var dicEvalXAsig = GetDicEvaluaXAsig();
+
+            foreach (var asigConEval in dicEvalXAsig)
+            {
+                var dummy = from eval in asigConEval.Value
+                            group eval by eval.Alumno.UniqueId
+                            into grupoEvalsAlumno
+                            select new
+                            {
+                                AlumnoId = grupoEvalsAlumno.Key,
+                                Promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)
+                            };
+            }
+
+            return rta;
+        }
+
     }
 }
