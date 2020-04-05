@@ -25,7 +25,7 @@ namespace CoreEscuela
             Printer.WriteTitle("Captura de una Evaluación por Consola");
             var newEval = new Evaluación();
             string nombre, notastring;
-            float nota;
+            //float nota;
 
             WriteLine("Ingrese el nombre de la evaluación");
             Printer.PreioneEnter();
@@ -72,6 +72,11 @@ namespace CoreEscuela
                 {
                     Printer.WriteTitle("El valor de la nota no es un número valido");
                     WriteLine("Saliendo del programa");
+                }
+                finally
+                {
+                    //El finally dentro de las excepciones es ese fragmento de codigo que siempre se va a jecutar antes de terminar la apliación o proceso de la excepcion.
+                    Console.WriteLine("FINAllY");
                 }
             }
 
